@@ -1,0 +1,19 @@
+# Default NAMESPACE created by R
+# Remove the previous line if you edit this file
+
+# Export all names
+exportPattern(".")
+
+# Import all packages listed as Imports or Depends
+import(
+  clue
+)
+
+importFrom("grDevices", "dev.off", "pdf")
+importFrom("graphics", "abline", "axis", "grid", "hist", "legend",
+"lines", "matplot", "par", "plot", "points")
+importFrom("stats", "binom.test", "lowess", "qbeta", "quantile",
+"rnbinom", "rpois", "runif")
+importFrom("utils", "read.delim", "read.table", "tail", "write.table")
+
+useDynLib(seqCBS)
