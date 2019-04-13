@@ -5,6 +5,8 @@
 #include <R_ext/Print.h>
 #include <Rmath.h>
 #include <math.h>
+#include <stdlib.h>
+#include <R_ext/Rdynload.h>
 
 /*
 # CombineSortedVectorC.c
@@ -12,12 +14,6 @@
 # Combine two vectors sorted in increasing order
 # Updated: 4/13/2010
 */
-
-#include <R.h>
-#include <Rinternals.h>
-#include <Rdefines.h>
-#include <R_ext/Print.h>
-#include <math.h>
 
 SEXP CombineSortedVectorC(SEXP casesS, SEXP controlsS) {
 	double *cases = REAL(casesS);
@@ -749,4 +745,29 @@ SEXP BayesCptCICompC(SEXP betaParam1S, SEXP betaParam2S, SEXP wksS, SEXP alphaS,
 	CIPtr[1] = rtBetaMixCDF(pHigh, betaParam1, betaParam2, wks, nMix, epsCDF);
 	UNPROTECT(1);
 	return(CI);
+}
+
+#define CALLDEF(name, n)  {#name, (DL_FUNC) &name, n}
+static const R_CallMethodDef R_CallDef[] = {
+   CALLDEF(BayesCptCICompC, 5),
+   CALLDEF(CombineSortedVectorC, 2),
+   CALLDEF(CombineToUniqueValueC, 3),
+   CALLDEF(dBetaMixEval, 5),
+   CALLDEF(FindUniqueInSortedArrayC, 1),
+   CALLDEF(pBetaMixRootEval, 6),
+   CALLDEF(rtBetaMixCDF, 6),
+   CALLDEF(ScanIGSGridCumSumC, 2),
+   CALLDEF(ScanStatNewCompBinomC, 8),
+   CALLDEF(ScanStatNewCompNormalC, 9),
+   CALLDEF(ScanStatNewCompRabinC, 9),
+   CALLDEF(ScanStatRefineCompBinomC, 9),
+   CALLDEF(ScanStatRefineCompNormalC, 10),
+   CALLDEF(ScanStatRefineCompRabinC, 10),
+   {NULL, NULL, 0}
+};
+
+void R_init_seqCBS(DllInfo *dll)
+{
+    R_registerRoutines(dll, NULL, R_CallDef, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
 }

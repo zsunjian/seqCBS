@@ -35,8 +35,8 @@ function(combX, combZ, combL, statistic, grid.size, nGridSize, timeIGSBreakDown,
 			max.win = 2*floor(grid.size[g-1]/grid.size[g])
 		}
 		max.win=as.numeric(max.win)
-		combZCumSum = as.numeric(.Call("ScanIGSGridCumSumC", as.numeric(combZ), as.numeric(grid.cur), PACKAGE="seqCBS"))
-		combXCumSum = as.numeric(.Call("ScanIGSGridCumSumC", as.numeric(combX), as.numeric(grid.cur), PACKAGE="seqCBS"))
+		combZCumSum = as.numeric(.Call(C_ScanIGSGridCumSumC, as.numeric(combZ), as.numeric(grid.cur)))
+		combXCumSum = as.numeric(.Call(C_ScanIGSGridCumSumC, as.numeric(combX), as.numeric(grid.cur)))
 		combZPoint = as.numeric(combZ[grid.cur])
 		combXPoint = as.numeric(combX[grid.cur])
 		timeIGSBreakDown[timeRow,3] = timeIGSBreakDown[timeRow,3] + proc.time()[3] - timeIGSnew

@@ -1,8 +1,31 @@
 # Default NAMESPACE created by R
 # Remove the previous line if you edit this file
 
-# Export all names
-exportPattern(".")
+# Export only the user-facing R functions
+export(BayesCptCI)
+export(CombineCaseControlC)
+export(CombineReadsAcrossRuns)
+export(getAutoGridSize)
+export(getCountsInWindow)
+export(hppSimulate)
+export(nhppRateEstimate)
+export(nhppSimConstWindowAnalysis)
+export(nhppSimConstWindowGen)
+export(nhppSpike)
+export(readInput)
+export(readListInputFile)
+export(readSeqChiang)
+export(readSeqELANDPaired)
+export(readSeq)
+export(relCNComp)
+export(ScanBIC)
+export(ScanCBSPlot)
+export(ScanCBS)
+export(ScanCBSSimPlot)
+export(ScanIterateGrid)
+export(ScanStatNewComp)
+export(ScanStatRefineComp)
+export(SegSeqResProcess)
 
 # Import all packages listed as Imports or Depends
 import(
@@ -16,4 +39,4 @@ importFrom("stats", "binom.test", "lowess", "qbeta", "quantile",
 "rnbinom", "rpois", "runif")
 importFrom("utils", "read.delim", "read.table", "tail", "write.table")
 
-useDynLib(seqCBS)
+useDynLib(seqCBS, .registration = TRUE, .fixes = "C_")

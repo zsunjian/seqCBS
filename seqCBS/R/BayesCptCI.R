@@ -191,7 +191,7 @@ function(cases, controls, CBSRes, stepSize="adaptive", adaptMaxMix=80, alpha=0.0
 	CIRes[4,] = combL[CIRes[2,]]
 	rownames(CIRes) = c("LIndex", "RIndex", "LLabel", "RLabel", "CIL", "CIU")
 	for(i in 1:nUniquePoint) {
-		CIRes[5:6,i] = .Call("BayesCptCICompC", as.numeric(mixStruct[[i]][1,]), as.numeric(mixStruct[[i]][2,]), as.numeric(mixStruct[[i]][3,]), as.numeric(alpha), as.numeric(epsCDF), PACKAGE="seqCBS")
+		CIRes[5:6,i] = .Call(C_BayesCptCICompC, as.numeric(mixStruct[[i]][1,]), as.numeric(mixStruct[[i]][2,]), as.numeric(mixStruct[[i]][3,]), as.numeric(alpha), as.numeric(epsCDF))
 		if(verbose) {
 			reportAt = seq(from=0.1, to=1, by=0.1)
 			if(any(i == floor(nUniquePoint*reportAt))) {
