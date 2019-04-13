@@ -145,7 +145,7 @@ SEXP ScanStatNewCompBinomC(SEXP combZCumSumS, SEXP combXCumSumS, SEXP combZPoint
 	double *gridCur = REAL(gridCurS);
 	double maxWin = REAL(maxWinS)[0];
 	long long i, j, jMax, bestWinI, bestWinJ;
-	double nCas, nObs, nCon, pNObs, nCasTot, nConTot, nCasOut, nConOut, pOut, Rij, bestWinR, pij, l0;
+	double nCas, nObs, nCon, nCasTot, nConTot, nCasOut, nConOut, pOut, Rij, bestWinR, pij, l0;
 	SEXP newRes;
 	PROTECT(newRes = allocMatrix(REALSXP, gridCurMaxInd, 3));
 	double *newResPtr = REAL(newRes);
@@ -246,7 +246,7 @@ SEXP ScanStatRefineCompBinomC(SEXP combZCumSumS, SEXP combXCumSumS, SEXP combZPo
 	double maxWin = REAL(maxWinS)[0];
 	double jMin, gridLL, gridLR, gridRL, gridRR;
 	long long i, j, nRows, bestWinI, bestWinJ, rCt;
-	double nCas, nObs, nCon, pNObs, nCasTot, nConTot, nCasOut, nConOut, nTotOut, pOut, Rij, bestWinR, pij, l0;
+	double nCas, nObs, nCon, nCasTot, nConTot, nCasOut, nConOut, pOut, Rij, bestWinR, pij, l0;
 	int newIter;
 	
 	nCasTot = combZCumSum[length(combZCumSumS)-1];
