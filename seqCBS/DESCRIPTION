@@ -1,7 +1,7 @@
 Package: seqCBS
 Type: Package
-Title: CN Profiling using Sequencing and CBS
-Version: 1.3
+Title: Copy Number Profiling using Sequencing and CBS
+Version: 1.3.1
 Date: 2019-04-12
 Author: Jeremy J. Shen, Nancy R. Zhang
 Maintainer: Jeremy J. Shen <jeremyjshen@gmail.com>
